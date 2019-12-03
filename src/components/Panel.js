@@ -6,7 +6,7 @@ import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
 import ChatContainer from './Chats/ChatContainer.js';
 
-const socketUrl = 'http://localhost:3231';
+const socketUrl = 'https://fathomless-earth-68587.herokuapp.com:3231';
 
 export default class Panel extends Component {
   constructor(props) {
