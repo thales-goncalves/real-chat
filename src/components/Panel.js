@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import io from 'socket.io-client';
 
-import { USER_CONNECT, LOGOUT } from '../Events';
+import { USER_CONNECT, LOGOUT, VERIFY_USER } from '../Events';
 import LoginForm from './Forms/LoginForm';
 import SignUpForm from './Forms/SignUpForm';
 import ChatContainer from './Chats/ChatContainer';
 
-const socketUrl = 'http://localhost:3231';
+const socketUrl = 'https://socket-chat-io.herokuapp.com';
 
 export default class Panel extends Component {
   constructor(props) {
@@ -21,14 +21,29 @@ export default class Panel extends Component {
   componentDidMount() {
     this.initSocket();
   }
-
   initSocket = () => {
     const socket = io(socketUrl);
+
+    if (this.state.user) {
+      this.reconnect(socket);
+    } else {
+      console.info('Connected');
+    }
 
     socket.on('connect', () => {
       console.info("It's On!");
     });
     this.setState({ socket });
+  };
+
+  reconnect = socket => {
+    socket.emi(VERIFY_USER, this.state.user.email, this.state.user.password, ({ isUser, user }) => {
+      if (isUser) {
+        this.setState({ user: null });
+      } else {
+        this.setState({ user });
+      }
+    });
   };
 
   setUser = user => {
