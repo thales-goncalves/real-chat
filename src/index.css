@@ -15,7 +15,6 @@ br {
 }
 
 .App {
-  text-align: center;
   min-height: 100vh;
   background: #84e;
   background: -moz-linear-gradient(137deg, #84e 0%, rgba(118, 207, 255, 1) 100%);
@@ -40,6 +39,7 @@ br {
   background-color: white;
   padding: 50px 30px;
   width: 350px;
+  text-align: center;
 }
 .login-form input {
   max-width: 100%;
@@ -52,6 +52,7 @@ br {
   border-bottom: solid 2px #b3b2ca;
   transition: all 0.23s ease-in;
   width: 100%;
+  text-align: center;
 }
 .login-form input:focus {
   border-bottom: solid 2px #5d5d8a;
@@ -83,11 +84,14 @@ br {
 #side-bar {
   box-sizing: border-box;
   width: 33.75%;
+  max-width: 340px;
+  min-width: 240px;
   height: 100vh;
   display: flex;
   justify-content: space-around;
   flex-direction: column;
 }
+
 #side-bar .heading .app-name {
   font-size: 20px;
   align-items: center;
@@ -179,7 +183,6 @@ br {
   flex-grow: 1;
 }
 #side-bar .users::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #cac8ee;
 }
 #side-bar .users::-webkit-scrollbar {
@@ -229,6 +232,35 @@ br {
   padding-left: 16px;
   padding-right: 16px;
 }
+
+#side-bar .side-bar-select {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#side-bar .side-bar-select__option {
+  background: #484d79;
+  padding: 5px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+#side-bar .side-bar-select__option.active {
+  background: #363656;
+}
+
+#side-bar .current-user .user {
+  padding: 7px;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+#side-bar .current-user .user span {
+  margin: 0 5px;
+}
 #side-bar .current-user .logout {
   align-items: center;
   cursor: pointer;
@@ -271,7 +303,7 @@ br {
 }
 .chat-room-container {
   height: 100vh;
-  width: 76.25%;
+  width: 100%;
 }
 @media screen and (max-width: 510px) {
   #side-bar {
@@ -300,7 +332,6 @@ br {
   position: relative;
 }
 .thread-container::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #cac8ee;
 }
 .thread-container::-webkit-scrollbar {
@@ -429,7 +460,6 @@ br {
   border: none;
 }
 .message-input .message-form .form-control::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #cac8ee;
 }
 .message-input .message-form .form-control::-webkit-scrollbar {
@@ -456,4 +486,78 @@ br {
 .message-input .message-form .send:disabled {
   opacity: 0.2;
   background: #5d5d8a;
+}
+.settings {
+  display: flex;
+}
+
+.settings-modal {
+  background: #3e3e5e;
+  padding: 25px;
+  width: 100%;
+}
+
+.settings-modal .settings-title {
+  text-align: center;
+  text-justify: auto;
+  font-size: 20px;
+  padding: 5px auto;
+}
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  align-items: center;
+  justify-items: center;
+}
+
+.settings-form button {
+  background: #5d5d8a;
+  color: white;
+  border: none;
+  height: 40px !important;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.settings-form .setting-buttons {
+  margin: 15px 0px;
+  width: 100%;
+  display: flex;
+}
+.settings-form .setting-buttons .close {
+  margin-right: 5px;
+}
+.settings-form .setting-buttons .save {
+  margin-left: 5px;
+}
+.settings-form .setting-buttons button {
+  margin: 7px 0px;
+}
+
+.settings-form .settings-label {
+  font-size: 18px;
+  margin-top: 10px;
+  width: 100%;
+}
+.settings-form .be-careful {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.settings-form .be-careful .delete-account {
+  font-size: 15px;
+  background: crimson;
+  width: 100%;
+}
+
+.settings-label input {
+  max-width: 100%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  height: 20px;
+  font-size: 15px;
+  width: 100%;
+  border-radius: 5px;
 }

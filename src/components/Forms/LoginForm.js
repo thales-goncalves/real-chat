@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { VERIFY_USER } from '../Events';
+import { VERIFY_USER } from '../../Events';
 
 export default class LoginForm extends Component {
   _isMounted = false;
@@ -22,6 +22,10 @@ export default class LoginForm extends Component {
       this.setError('');
       this.props.setUser(response);
     }
+  };
+
+  login = () => {
+    this.props.isRegister(false);
   };
 
   setError = error => {
@@ -74,6 +78,20 @@ export default class LoginForm extends Component {
           <div className="error">{error ? error : null}</div>
           <br />
           <input className="login-btn" type="submit" value="Login" />
+          <br />
+          <div>
+            <span>
+              Don't have account?{' '}
+              <a
+                href="#"
+                onClick={() => {
+                  this.login(false);
+                }}
+              >
+                Sign Up
+              </a>
+            </span>
+          </div>
         </form>
       </div>
     );

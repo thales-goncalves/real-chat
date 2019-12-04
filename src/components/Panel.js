@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import io from 'socket.io-client';
 
-import { USER_CONNECT, REGISTER_USER, LOGOUT } from '../Events';
-import LoginForm from './LoginForm';
-import SignUpForm from './SignUpForm';
-import ChatContainer from './Chats/ChatContainer.js';
+import { USER_CONNECT, LOGOUT } from '../Events';
+import LoginForm from './Forms/LoginForm';
+import SignUpForm from './Forms/SignUpForm';
+import ChatContainer from './Chats/ChatContainer';
 
-const socketUrl = 'https://fathomless-earth-68587.herokuapp.com:3231';
+const socketUrl = 'http://localhost:3231';
 
 export default class Panel extends Component {
   constructor(props) {
@@ -14,7 +14,8 @@ export default class Panel extends Component {
 
     this.state = {
       socket: null,
-      user: null
+      user: null,
+      isLogin: true
     };
   }
   componentDidMount() {
@@ -25,7 +26,7 @@ export default class Panel extends Component {
     const socket = io(socketUrl);
 
     socket.on('connect', () => {
-      console.log("It's On!");
+      console.info("It's On!");
     });
     this.setState({ socket });
   };
@@ -36,9 +37,14 @@ export default class Panel extends Component {
     this.setState({ user });
   };
 
+  isRegister = isLogin => {
+    this.setState({ isLogin });
+  };
+
   registerUser = user => {
     const { socket } = this.state;
     socket.emit(USER_CONNECT, user);
+    this.setState({ isLogin: true });
     this.setState({ user });
   };
 
@@ -51,13 +57,18 @@ export default class Panel extends Component {
   };
 
   render() {
-    const { socket, user } = this.state;
+    const { socket, user, isLogin } = this.state;
     return (
       <div className="container">
         {!user ? (
-          <LoginForm socket={socket} setUser={this.setUser} />
+          <div className="container">
+            {!isLogin ? (
+              <SignUpForm socket={socket} registerUser={this.registerUser} isRegister={this.isRegister} />
+            ) : (
+              <LoginForm socket={socket} setUser={this.setUser} isRegister={this.isRegister} />
+            )}
+          </div>
         ) : (
-          // <SignUpForm socket={socket} registerUser={this.registerUser} />
           <ChatContainer socket={socket} user={user} logout={this.logout} />
         )}
       </div>

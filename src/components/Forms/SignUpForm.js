@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { REGISTER_USER } from '../Events';
+import { REGISTER_USER } from '../../Events';
 
 export default class components extends Component {
   constructor(props) {
@@ -10,6 +10,7 @@ export default class components extends Component {
       username: '',
       phone: '',
       password: '',
+      address: '',
       error: ''
     };
     this.handleChange = this.handleChange.bind(this);
@@ -21,8 +22,11 @@ export default class components extends Component {
       this.setError(`${response.message}`);
     } else {
       this.props.registerUser(response);
-      this.setError(`Welcome ${response.username}`);
     }
+  };
+
+  login = () => {
+    this.props.isRegister(true);
   };
 
   setError = error => {
@@ -38,15 +42,13 @@ export default class components extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    console.log('SENT');
-
     const { socket } = this.props;
-    const { email, username, phone, password } = this.state;
+    const { email, username, address, phone, password } = this.state;
 
-    socket.emit(REGISTER_USER, email, username, phone, password, this.registerUser);
+    socket.emit(REGISTER_USER, email, username, address, phone, password, this.registerUser);
   };
   render() {
-    const { email, username, phone, password, error } = this.state;
+    const { email, username, address, phone, password, error } = this.state;
     return (
       <div className="login">
         <form onSubmit={this.handleSubmit} className="login-form">
@@ -73,7 +75,7 @@ export default class components extends Component {
                 this.textInput = input;
               }}
               onChange={this.handleChange}
-              placeholder={'My Awesome nickname'}
+              placeholder={'Coolest Nickname Ever!!'}
             />
           </label>
           <label htmlFor="phone">
@@ -86,7 +88,20 @@ export default class components extends Component {
                 this.textInput = input;
               }}
               onChange={this.handleChange}
-              placeholder={'My Phone Number'}
+              placeholder={' +1 4085 55 1234'}
+            />
+          </label>
+          <label htmlFor="address">
+            <h2>Address</h2>
+            <input
+              id="address"
+              value={address}
+              type="text"
+              ref={input => {
+                this.textInput = input;
+              }}
+              onChange={this.handleChange}
+              placeholder={'Address ??'}
             />
           </label>
           <label htmlFor="password">
@@ -105,6 +120,20 @@ export default class components extends Component {
           <div className="error">{error ? error : null}</div>
           <br />
           <input className="login-btn" type="submit" value="Register" />
+          <br />
+          <div>
+            <span>
+              Already have an account?{' '}
+              <a
+                href="#"
+                onClick={() => {
+                  this.login(true);
+                }}
+              >
+                Login
+              </a>
+            </span>
+          </div>
         </form>
       </div>
     );
