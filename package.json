@@ -24,6 +24,9 @@
     "concurrently": "^5.0.0",
     "nodemon": "^2.0.1"
   },
+   "resolutions": {
+    "serialize-javascript": "^2.1.1"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
