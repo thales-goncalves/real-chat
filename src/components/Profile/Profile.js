@@ -11,8 +11,8 @@ export default class Profile extends Component {
       _id: user._id,
       email: user.email,
       username: user.username,
-      address: user.address,
-      phone: user.phone,
+      // address: user.address,
+      // phone: user.phone,
       password: user.password
     };
 
@@ -77,7 +77,7 @@ export default class Profile extends Component {
                 value={username}
               />
             </label>
-            <label htmlFor="address" className="settings-label">
+            {/* <label htmlFor="address" className="settings-label">
               Address
               <input
                 id="address"
@@ -100,7 +100,7 @@ export default class Profile extends Component {
                 onChange={this.handleChange}
                 value={phone}
               />
-            </label>
+            </label> */}
             <label htmlFor="password" className="settings-label">
               Password
               <input

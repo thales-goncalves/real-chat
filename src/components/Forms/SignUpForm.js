@@ -48,7 +48,7 @@ export default class components extends Component {
     socket.emit(REGISTER_USER, email, username, address, phone, password, this.registerUser);
   };
   render() {
-    const { email, username, address, phone, password, error } = this.state;
+    const { email, username, password, error } = this.state;
     return (
       <div className="login">
         <form onSubmit={this.handleSubmit} className="login-form">
@@ -78,7 +78,7 @@ export default class components extends Component {
               placeholder={'Coolest Nickname Ever!!'}
             />
           </label>
-          <label htmlFor="phone">
+          {/* <label htmlFor="phone">
             <h2>Phone</h2>
             <input
               id="phone"
@@ -103,7 +103,7 @@ export default class components extends Component {
               onChange={this.handleChange}
               placeholder={'Address ??'}
             />
-          </label>
+          </label> */}
           <label htmlFor="password">
             <h2>Password</h2>
             <input
