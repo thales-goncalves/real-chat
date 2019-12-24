@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 
 import { VERIFY_USER } from '../../Events';
 
+const validEmailRegex = RegExp(
+  /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+);
+
 export default class LoginForm extends Component {
   _isMounted = false;
   constructor(props) {
@@ -9,7 +13,12 @@ export default class LoginForm extends Component {
     this.state = {
       email: '',
       password: '',
-      error: ''
+      error: '',
+      errors: {
+        username: '',
+        email: '',
+        password: ''
+      }
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -36,22 +45,49 @@ export default class LoginForm extends Component {
     this.setState({
       [event.target.id]: event.target.value
     });
+
+    let errors = this.state.errors;
+    const { id, value } = event.target;
+    switch (id) {
+      case 'email':
+        errors.email = validEmailRegex.test(value) ? '' : 'Email is not valid!';
+        break;
+      case 'password':
+        errors.password = value.length < 5 ? 'Password must be 5 characters long!' : '';
+        break;
+      default:
+        break;
+    }
+
+    this.setState({ errors, [id]: value });
   }
   handleSubmit = event => {
     event.preventDefault();
     const { socket } = this.props;
-    const { email, password } = this.state;
 
-    socket.emit(VERIFY_USER, email, password, this.setUser);
+    if (this.validateForm(this.state.errors)) {
+      const { email, password } = this.state;
+      socket.emit(VERIFY_USER, email, password, this.setUser);
+    } else {
+      alert('Invalid Form');
+    }
   };
+
+  validateForm = errors => {
+    let valid = true;
+    Object.values(errors).forEach(val => val.length > 0 && (valid = false));
+    return valid;
+  };
+
   render() {
-    const { email, password, error } = this.state;
+    const { email, password, error, errors } = this.state;
     return (
       <div className="login">
         <form onSubmit={this.handleSubmit} className="login-form">
           <label htmlFor="email">
             <h2>Email</h2>
             <input
+              required
               id="email"
               value={email}
               type="text"
@@ -61,10 +97,12 @@ export default class LoginForm extends Component {
               onChange={this.handleChange}
               placeholder={'My Email'}
             />
+            {errors.email.length > 0 && <span className="error">{errors.email}</span>}
           </label>
           <label htmlFor="password">
             <h2>Password</h2>
             <input
+              required
               id="password"
               value={password}
               type="password"
@@ -74,6 +112,7 @@ export default class LoginForm extends Component {
               onChange={this.handleChange}
               placeholder={'MyTopSecr4tKey!'}
             />
+            {errors.password.length > 0 && <span className="error">{errors.password}</span>}
           </label>
           <div className="error">{error ? error : null}</div>
           <br />

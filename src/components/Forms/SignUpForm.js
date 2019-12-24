@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 
 import { REGISTER_USER } from '../../Events';
 
+const validEmailRegex = RegExp(
+  /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+);
+
 export default class components extends Component {
   constructor(props) {
     super(props);
@@ -11,7 +15,12 @@ export default class components extends Component {
       phone: '',
       password: '',
       address: '',
-      error: ''
+      error: '',
+      errors: {
+        username: '',
+        email: '',
+        password: ''
+      }
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,24 +46,53 @@ export default class components extends Component {
     this.setState({
       [event.target.id]: event.target.value
     });
+
+    let errors = this.state.errors;
+    const { id, value } = event.target;
+    switch (id) {
+      case 'username':
+        errors.username = value.length < 5 ? 'Full Name must be 5 characters long!' : '';
+        break;
+      case 'email':
+        errors.email = validEmailRegex.test(value) ? '' : 'Email is not valid!';
+        break;
+      case 'password':
+        errors.password = value.length < 5 ? 'Password must be 5 characters long!' : '';
+        break;
+      default:
+        break;
+    }
+
+    this.setState({ errors, [id]: value });
   }
 
   handleSubmit = event => {
     event.preventDefault();
 
     const { socket } = this.props;
-    const { email, username, address, phone, password } = this.state;
-
-    socket.emit(REGISTER_USER, email, username, address, phone, password, this.registerUser);
+    if (this.validateForm(this.state.errors)) {
+      const { email, username, address, phone, password } = this.state;
+      socket.emit(REGISTER_USER, email, username, address, phone, password, this.registerUser);
+    } else {
+      alert('Invalid Form');
+    }
   };
+
+  validateForm = errors => {
+    let valid = true;
+    Object.values(errors).forEach(val => val.length > 0 && (valid = false));
+    return valid;
+  };
+
   render() {
-    const { email, username, password, error } = this.state;
+    const { email, username, password, error, errors } = this.state;
     return (
       <div className="login">
         <form onSubmit={this.handleSubmit} className="login-form">
           <label htmlFor="email">
             <h2>Email</h2>
             <input
+              required
               id="email"
               value={email}
               type="text"
@@ -64,10 +102,12 @@ export default class components extends Component {
               onChange={this.handleChange}
               placeholder={'My Email'}
             />
+            {errors.email.length > 0 && <span className="error">{errors.email}</span>}
           </label>
           <label htmlFor="username">
             <h2>Username</h2>
             <input
+              required
               id="username"
               value={username}
               type="text"
@@ -77,6 +117,7 @@ export default class components extends Component {
               onChange={this.handleChange}
               placeholder={'Coolest Nickname Ever!!'}
             />
+            {errors.username.length > 0 && <span className="error">{errors.username}</span>}
           </label>
           {/* <label htmlFor="phone">
             <h2>Phone</h2>
@@ -107,6 +148,7 @@ export default class components extends Component {
           <label htmlFor="password">
             <h2>Password</h2>
             <input
+              required
               id="password"
               value={password}
               type="password"
@@ -116,6 +158,7 @@ export default class components extends Component {
               onChange={this.handleChange}
               placeholder={'MyTopSecr4tKey!'}
             />
+            {errors.password.length > 0 && <span className="error">{errors.password}</span>}
           </label>
           <div className="error">{error ? error : null}</div>
           <br />
