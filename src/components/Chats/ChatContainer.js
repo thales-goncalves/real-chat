@@ -10,7 +10,8 @@ import {
   PRIVATE_MESSAGE
 } from '../../Events';
 import SideBar from '../Sidebar/SideBar';
-import ChatHeading from './ChatHeading';
+// import ChatHeading from './ChatHeading';
+import ChatHeading from './ChatHeading/index';
 import Messages from '../Messages/Messages';
 import MessageInput from '../Messages/MessageInput';
 import { values } from 'lodash';
