@@ -7,3 +7,6 @@ Este projeto faz parte do meu portifólio pessoal de desenvolvedor, portanto nã
 Para críticas, sugestões e comentários: thales.g.goncalves@outlook.com
 
 Ainda em desenvolvimento...
+
+## Live
+https://real-chat.bit-storage.com
