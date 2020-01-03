@@ -13,9 +13,8 @@ export default class ChatHeading extends Component {
           <div className="user-info">
             <div className="user-name">{name}</div>
             <div className="status">
-              status
-              <div className="indicator">indicator</div>
-              <span>2</span>
+              <div className="indicator"></div>
+              <span>{numberOfUsers ? numberOfUsers : null}</span>
             </div>
           </div>
       </Container>

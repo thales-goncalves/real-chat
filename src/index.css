@@ -3,12 +3,12 @@ body,
 #root {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   height: 100%;
 }
 input,
 textarea {
-  font-family: Arial;
+  font-family: Arial, Helvetica, sans-serif;
 }
 br {
   margin: 5px;
@@ -16,10 +16,16 @@ br {
 
 .App {
   min-height: 100vh;
-  background: #84e;
-  background: -moz-linear-gradient(137deg, #84e 0%, rgba(118, 207, 255, 1) 100%);
-  background: -webkit-linear-gradient(137deg, #84e 0%, rgba(118, 207, 255, 1) 100%);
-  background: linear-gradient(137deg, #84e 0%, rgba(118, 207, 255, 1) 100%);
+  background: #3C4556;
+  background: -moz-linear-gradient(
+    137deg,
+    #3C4556 0%,
+  );
+  background: -webkit-linear-gradient(
+    137deg,
+    #282A36 0%,
+  );
+  background: linear-gradient(137deg, #282a36 0%, rgb(99, 101, 116) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="##84e",endColorstr="#76cfff",GradientType=1);
 }
 
@@ -36,7 +42,7 @@ br {
   justify-content: center;
   flex-direction: column;
   border-radius: 30px;
-  background-color: white;
+  background-color: #282a36;
   padding: 50px 30px;
   width: 350px;
   text-align: center;
@@ -46,41 +52,62 @@ br {
   border-top: none;
   border-left: none;
   border-right: none;
-  height: 20px;
+  height: 2rem;
   line-height: 20px;
+  border-radius: 15px;
   font-size: 20px;
-  border-bottom: solid 2px #b3b2ca;
+  border: solid 2px #FFFBFE;
   transition: all 0.23s ease-in;
   width: 100%;
   text-align: center;
+  margin-bottom: 7px;
 }
 .login-form input:focus {
-  border-bottom: solid 2px #5d5d8a;
+  border-bottom: solid 2px #FFFBFE;
   outline: none;
 }
 .login-form .error {
   text-align: center;
   margin: 5px 0;
-  padding: 5px 10px;
+  padding: 4px 10px;
   color: #c92c43;
 }
 
+a{
+  color: #FFFBFE;
+}
+
+.login-form  label span {
+
+  margin: 10px;
+}
+
 .login-btn {
-  background: #5d5d8a;
-  color: white;
+  background: #282a36;
+  color: #FFFBFE;
   text-align: center;
   padding: 7px 10px;
   height: 40px !important;
   border-radius: 10px;
+  margin-bottom: 5px;
 }
+
+
+
+
 .container {
-  color: #cac8ee;
+  color: #FFFBFE;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   height: 100%;
   width: 100%;
 }
+
+
+
+
+
 #side-bar {
   box-sizing: border-box;
   width: 33.75%;
@@ -93,9 +120,11 @@ br {
 }
 
 #side-bar .heading .app-name {
-  font-size: 20px;
+  font-size: 1.5rem;
   align-items: center;
 }
+
+
 #side-bar .heading .menu {
   display: inline-block;
   position: relative;
@@ -111,10 +140,10 @@ br {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background: #2e2e4f;
+  background: #282a36;
 }
 #side-bar .search {
-  background: #3e3e5e;
+  background: #282a36;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -122,7 +151,7 @@ br {
   align-items: center;
   border-width: 1px 0;
   border-style: solid;
-  border-color: black;
+  border-color: #282a36;
   padding-left: 15px;
   padding-right: 20px;
   height: 10vh;
@@ -134,17 +163,17 @@ br {
 }
 #side-bar .search input {
   width: 100%;
-  background: #3e3e5e;
+  background: #282a36;
   flex-grow: 1;
   box-sizing: border-box;
   border: none;
-  color: #cac8ee;
+  color: #FFFBFE;
 }
 #side-bar .search input:focus {
   outline: none;
 }
 #side-bar .search input::placeholder {
-  color: #cac8ee;
+  color: #FFFBFE;
   opacity: 0.6;
 }
 #side-bar .search .add {
@@ -162,7 +191,7 @@ br {
 }
 #side-bar .search .plus::after,
 #side-bar .search .plus::before {
-  content: '';
+  content: "";
   position: absolute;
   background: #b3b2ca;
 }
@@ -179,11 +208,11 @@ br {
 }
 #side-bar .users {
   overflow-y: scroll;
-  background: #3e3e5e;
+  background: #4f505a;
   flex-grow: 1;
 }
 #side-bar .users::-webkit-scrollbar-track {
-  background-color: #cac8ee;
+  background-color: #FFFBFE;
 }
 #side-bar .users::-webkit-scrollbar {
   width: 5px;
@@ -201,7 +230,7 @@ br {
 }
 #side-bar .users .user.active,
 #side-bar .users .user:hover {
-  background: #2e2e4f;
+  background: #454751;
 }
 #side-bar .users .user:hover:not(.active) {
   cursor: pointer;
@@ -222,7 +251,7 @@ br {
 }
 #side-bar .current-user {
   align-items: center;
-  background: #484d79;
+  background: #282a36;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -239,7 +268,7 @@ br {
   align-items: center;
 }
 #side-bar .side-bar-select__option {
-  background: #484d79;
+  background: #282a36;
   padding: 5px;
   width: 100%;
   height: 100%;
@@ -250,7 +279,7 @@ br {
   cursor: pointer;
 }
 #side-bar .side-bar-select__option.active {
-  background: #363656;
+  background: #4f505a;
 }
 
 #side-bar .current-user .user {
@@ -269,6 +298,8 @@ br {
   font-size: 1.5em;
 }
 
+
+/*CHATT*/
 .chat-room-container {
   height: 100vh;
   width: 100%;
@@ -300,7 +331,7 @@ br {
   position: relative;
 }
 .thread-container::-webkit-scrollbar-track {
-  background-color: #cac8ee;
+  background-color: #FFFBFE;
 }
 .thread-container::-webkit-scrollbar {
   width: 5px;
@@ -317,8 +348,8 @@ br {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  color: #b3b2ca;
-  background: #e6eaea;
+  color: #FFFBFE;
+  background: #76777f;
 }
 .message-container {
   display: flex;
@@ -329,11 +360,13 @@ br {
 }
 .message-container .time {
   order: 1;
+  font-size: 0.8rem;
 }
 .message-container .data {
   order: 2;
   height: 100%;
-  margin-left: 25px;
+  margin-left: 1.5%;
+  font-size: 1.2rem;
 }
 .message-container .name {
   font-size: 0.65em;
@@ -341,15 +374,16 @@ br {
   text-align: right;
 }
 .message-container .message {
-  background: #fff;
+  background: #454751;
   border-radius: 5px;
   border-top-left-radius: 0;
   box-sizing: border-box;
-  color: #b3b2ca;
+  color: #FFFBFE;
   height: 100%;
   padding: 10px 15px;
   position: relative;
 }
+
 @keyframes show {
   0% {
     opacity: 0;
@@ -361,11 +395,11 @@ br {
 .message-container .message::before {
   border-bottom-color: transparent;
   border-left-color: transparent;
-  border-right-color: #fff;
+  border-right-color: #454751;
   border-style: solid;
-  border-top-color: #fff;
+  border-top-color: #454751;
   border-width: 4px;
-  content: '';
+  content: "";
   height: 0;
   left: -7px;
   position: absolute;
@@ -378,24 +412,26 @@ br {
 }
 .message-container.right .time {
   order: 2;
-  margin-left: 25px;
+  margin-left: 1.5%;
+  font-size: 0.8rem;
 }
 .message-container.right .data {
   margin-left: 0;
   order: 1;
+  font-size: 1.1rem;
 }
 .message-container.right .name {
   display: none;
 }
 .message-container.right .message {
-  background: #89a1fc;
-  color: #fff;
+  background: #282a36;
+  color: #FFFBFE;
   border-top-right-radius: 0;
   border-top-left-radius: 5px;
 }
 .message-container.right .message::before {
-  border-top-color: #89a1fc;
-  border-left-color: #89a1fc;
+  border-top-color: #282a36;
+  border-left-color: #282a36;
   border-right-color: transparent;
   left: auto;
   right: -7px;
@@ -405,8 +441,8 @@ br {
   margin: 10px 15px;
 }
 .message-input {
-  background: white;
-  color: #484d79;
+  background: #282A36;
+  color: #FFFBFE;
   box-sizing: border-box;
   height: 10vh;
   max-height: 65px;
@@ -426,9 +462,12 @@ br {
   width: 80%;
   height: 100%;
   border: none;
+  background: #282A36;
+  color: #FFFBFE;
+  font-size: 1.1rem;
 }
 .message-input .message-form .form-control::-webkit-scrollbar-track {
-  background-color: #cac8ee;
+  background-color: #FFFBFE;
 }
 .message-input .message-form .form-control::-webkit-scrollbar {
   width: 5px;
@@ -447,20 +486,23 @@ br {
   text-align: center;
   border: none;
   height: 100%;
-  color: #fff;
-  background: #3e3e5e;
+  color: #FFFBFE;
+  background: #454751;
   transition: all 0.35s ease-out;
 }
 .message-input .message-form .send:disabled {
   opacity: 0.2;
-  background: #5d5d8a;
+  background: #282A36;
 }
+
+/*SETTTINGS*/
 .settings {
   display: flex;
 }
 
 .settings-modal {
-  background: #3e3e5e;
+  
+  background: #3b3d48;
   padding: 25px;
   width: 100%;
 }
@@ -471,6 +513,7 @@ br {
   font-size: 20px;
   padding: 5px auto;
 }
+
 .settings-form {
   display: flex;
   flex-direction: column;
@@ -480,12 +523,15 @@ br {
 }
 
 .settings-form button {
-  background: #5d5d8a;
-  color: white;
+  background: #3C4556;
+  color: #FFFBFE;
+  font-size: 1rem;
+  font-weight: bold;
   border: none;
-  height: 40px !important;
+  height: 50px !important;
   border-radius: 10px;
   width: 100%;
+  cursor: pointer;
 }
 
 .settings-form .setting-buttons {
@@ -516,6 +562,7 @@ br {
 .settings-form .be-careful .delete-account {
   font-size: 15px;
   background: crimson;
+  font-weight: bold;
   width: 100%;
 }
 
@@ -524,8 +571,10 @@ br {
   border-top: none;
   border-left: none;
   border-right: none;
-  height: 20px;
+  height: 30px;
   font-size: 15px;
   width: 100%;
   border-radius: 5px;
+  text-indent: 10px;
+  font-weight: bold;
 }
