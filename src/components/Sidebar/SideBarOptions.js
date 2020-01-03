@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-// import { Container } from './styles';
 
 export class SideBarOptions extends Component {
   static propTypes = {

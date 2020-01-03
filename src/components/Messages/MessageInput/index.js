@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
+import { Container } from './styles';
+
 export default class MessageInput extends Component {
+
   constructor(props) {
     super(props);
 
@@ -9,7 +12,6 @@ export default class MessageInput extends Component {
       isTyping: false
     };
   }
-
   componentWillUnmount() {
     this.stopCheckingTyping();
   }
@@ -52,7 +54,7 @@ export default class MessageInput extends Component {
   render() {
     const { message } = this.state;
     return (
-      <div className="message-input">
+      <Container>
         <form onSubmit={this.handleSubmit} className="message-form">
           <input
             type="text"
@@ -72,7 +74,8 @@ export default class MessageInput extends Component {
             Send{' '}
           </button>
         </form>
-      </div>
+      </Container>
     );
   }
 }
+

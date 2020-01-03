@@ -304,6 +304,7 @@ a{
   height: 100vh;
   width: 100%;
 }
+
 @media screen and (max-width: 510px) {
   #side-bar {
     position: absolute;
@@ -440,60 +441,8 @@ a{
   text-align: right;
   margin: 10px 15px;
 }
-.message-input {
-  background: #282A36;
-  color: #FFFBFE;
-  box-sizing: border-box;
-  height: 10vh;
-  max-height: 65px;
-}
-.message-input .message-form {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-.message-input .message-form .form-control {
-  padding-top: 24px;
-  padding-bottom: 24px;
-  resize: none;
-  padding-left: 15px;
-  box-sizing: border-box;
-  width: 80%;
-  height: 100%;
-  border: none;
-  background: #282A36;
-  color: #FFFBFE;
-  font-size: 1.1rem;
-}
-.message-input .message-form .form-control::-webkit-scrollbar-track {
-  background-color: #FFFBFE;
-}
-.message-input .message-form .form-control::-webkit-scrollbar {
-  width: 5px;
-  background-color: green;
-}
-.message-input .message-form .form-control::-webkit-scrollbar-thumb {
-  background-color: #484d79;
-}
-.message-input .message-form .form-control:focus {
-  outline: none;
-}
-.message-input .message-form .send {
-  width: 20%;
-  box-sizing: border-box;
-  font-size: 1.25em;
-  text-align: center;
-  border: none;
-  height: 100%;
-  color: #FFFBFE;
-  background: #454751;
-  transition: all 0.35s ease-out;
-}
-.message-input .message-form .send:disabled {
-  opacity: 0.2;
-  background: #282A36;
-}
+
+
 
 /*SETTTINGS*/
 .settings {

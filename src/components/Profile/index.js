@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { DESTROY, UPDATE_USER } from '../../Events';
 
+import { Container } from './styles';
+
 export default class Profile extends Component {
   constructor(props) {
     super(props);

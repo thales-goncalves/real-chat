@@ -13,7 +13,7 @@ import SideBar from '../Sidebar/SideBar';
 // import ChatHeading from './ChatHeading';
 import ChatHeading from './ChatHeading/index';
 import Messages from '../Messages/Messages';
-import MessageInput from '../Messages/MessageInput';
+import MessageInput from '../Messages/MessageInput/index';
 import { values } from 'lodash';
 
 export default class ChatContainer extends Component {

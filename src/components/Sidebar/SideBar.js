@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Profile from '../Profile/Profile';
+import Profile from '../Profile/index';
 import { FiMenu, FiSearch, FiPlus, FiLogOut, FiUser } from 'react-icons/fi';
 import { SideBarOptions } from './SideBarOptions';
 import { get, last, differenceBy } from 'lodash';
