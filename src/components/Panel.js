@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import io from 'socket.io-client';
 
 import { USER_CONNECT, LOGOUT, VERIFY_USER } from '../Events';
-import LoginForm from './Forms/LoginForm';
-import SignUpForm from './Forms/SignUpForm';
+import LoginForm from './Forms/LoginForm/index';
+import SignUpForm from './Forms/SignUpForm/index';
 import ChatContainer from './Chats/ChatContainer';
 
 const socketUrl = 'https://socket-chat-io.herokuapp.com';
