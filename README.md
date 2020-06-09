@@ -1,12 +1,25 @@
-# Real Chat
+# Real Chat :speech_balloon: em desenvolvimento...
+ [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Real Chat é uma aplicação de chat em tempo real onde voce pode se comunicar com outras pessoas através de messagens em grupos ou privadas.
+Real Chat is a real-time chat application where you can communicate with others through group or private messages.
 
-Este projeto faz parte do meu portifólio pessoal de desenvolvedor, portanto não aceitarei pull requests, porém sinta-se a vontade para usar o código aqui presente
-
-Para críticas, sugestões e comentários: thales.g.goncalves@outlook.com
-
-Ainda em desenvolvimento...
-
-## Live
+## Live (open on 2 separete windows)
 https://real-chat.bit-storage.com
+
+## Technologies
+
+ - NodeJS
+ - ReactJS
+ - Socket.io
+
+## How to contribute
+
+- Make a fork;
+- Create a branck with your feature: `git checkout -b my-feature`;
+- Commit changes: `git commit -m 'feat: My new feature'`;
+- Make a push to your branch: `git push origin my-feature`.
+- Create a pull request
+
+## License
+
+This project is under the MIT license. See the [LICENSE](LICENSE.md) for details.
